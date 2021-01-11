@@ -3,6 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { searchSlice } from './store/search';
+import { usersSlice } from './store/users';
+
+const rootReducer = combineReducers({ search: searchSlice.reducer, users: usersSlice.reducer })
+const store = configureStore({
+  reducer: rootReducer
+});
+
+
+//Testing action
+// const {searchUsers} = searchSlice.actions;
+
+// store.dispatch(searchUsers());
 
 ReactDOM.render(
   <React.StrictMode>
