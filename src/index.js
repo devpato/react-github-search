@@ -8,7 +8,7 @@ import { searchSlice } from './store/search';
 import { usersSlice } from './store/users';
 
 const rootReducer = combineReducers({ search: searchSlice.reducer, users: usersSlice.reducer })
-const store = configureStore({
+configureStore({
   reducer: rootReducer
 });
 
