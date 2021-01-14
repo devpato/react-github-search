@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 
 const Search = () => {
     return (
-        <SearchBar></SearchBar>
+        <SearchBar title="Users" url="api.github.com" path="search/users"></SearchBar>
     )
 }
 
