@@ -5,23 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { searchSlice } from './store/search';
-import { usersSlice } from './store/users';
+import dataSlice from './store/data';
+import { Provider } from 'react-redux';
 
-const rootReducer = combineReducers({ search: searchSlice.reducer, users: usersSlice.reducer })
-configureStore({
+const rootReducer = combineReducers({ search: searchSlice.reducer, data: dataSlice })
+const store = configureStore({
   reducer: rootReducer
 });
 
-
-//Testing action
-// const {searchUsers} = searchSlice.actions;
-
-// store.dispatch(searchUsers());
+export default store;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
