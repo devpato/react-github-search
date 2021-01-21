@@ -1,21 +1,42 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import { fetchUserDetails } from "../components/Api/UsersApi";
 
-const userSlice = createSlice({
-    name: 'user',
-    initialState: {
-        user: '',
-        loading: 'IDLE',
-        error: null,
-        userDetails: null
-    },
-    reducers: {
-        setUsers: (state, action) => {
-            state.users = action.payload;
-        },
-        setUser: (state, action) => {
-            state.user = action.payload;
-        },
+const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+
+export const getUserDetails = createAsyncThunk(
+    'user/details',
+    async (searchParam) => {
+      const response = await fetchUserDetails(searchParam);
+      return {
+        ...response[0].data,
+        starred: response[1].data,
+        repos: response[2].data,
+        organizations: response[3].data
+      }
     }
-  });
-  
-export default userSlice.reducer;
+  );
+
+  export const userSlice = createSlice({
+    name: 'users',
+    initialState: {
+        user: {},
+        loading: 'IDLE', //change to ENUM
+        error: null
+    },
+    reducers: {},
+    extraReducers: {
+        [getUserDetails.pending]: (state, action) => ({...state, loading: 'PENDING'}),
+        [getUserDetails.fulfilled]: (state, action) => {
+            return  {
+                user: { ...action.payload },
+                loading: 'IDLE',
+                error: null
+            };
+        },
+        [getUserDetails.rejected]: (state, action) => {
+            if (state.loading === 'PENDING') {
+              state.loading = 'idle'
+              state.error = action.error
+            }
+        }
+    }
+});

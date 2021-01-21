@@ -5,9 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { usersSlice } from './store/users';
+import {userSlice} from './store/user';
 import { Provider } from 'react-redux';
 
-const rootReducer = combineReducers({ users: usersSlice.reducer, user: usersSlice.reducer })
+const rootReducer = combineReducers({ users: usersSlice.reducer, user: userSlice.reducer })
 const store = configureStore({
   reducer: rootReducer
 });

@@ -8,7 +8,7 @@ export const fetchUsers = createAsyncThunk(
       const response = await searchUsers(searchParam);
       return response
     }
-  )
+  );
 
 export const usersSlice = createSlice({
     name: 'users',
@@ -16,7 +16,7 @@ export const usersSlice = createSlice({
         items: [],
         incomplete_results: false,
         total_count: 0,
-        loading: 'IDLE',
+        loading: 'IDLE', //change to ENUM
         error: null
     },
     reducers: {},
