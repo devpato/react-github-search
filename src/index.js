@@ -4,11 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { searchSlice } from './store/search';
-import dataSlice from './store/data';
+import { usersSlice } from './store/users';
 import { Provider } from 'react-redux';
 
-const rootReducer = combineReducers({ search: searchSlice.reducer, data: dataSlice })
+const rootReducer = combineReducers({ users: usersSlice.reducer, user: usersSlice.reducer })
 const store = configureStore({
   reducer: rootReducer
 });

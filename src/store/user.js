@@ -1,10 +1,12 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
-const dataSlice = createSlice({
-    name: 'data',
+const userSlice = createSlice({
+    name: 'user',
     initialState: {
-        users: [],
-        user: null
+        user: '',
+        loading: 'IDLE',
+        error: null,
+        userDetails: null
     },
     reducers: {
         setUsers: (state, action) => {
@@ -15,6 +17,5 @@ const dataSlice = createSlice({
         },
     }
   });
-
-export const {setUsers, setUser} = dataSlice.actions;
-export default dataSlice.reducer;
+  
+export default userSlice.reducer;
