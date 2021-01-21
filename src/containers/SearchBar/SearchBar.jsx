@@ -13,6 +13,7 @@ const SearchBar = ({ title, url, path }) => {
     }
 
     const handleSubmit = event => {
+        event.preventDefault();
         dispatch(fetchUsers(searchTerm));
         setSearchTerm('');
     }

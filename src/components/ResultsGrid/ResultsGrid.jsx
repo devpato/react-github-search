@@ -8,7 +8,7 @@ const ResultsGrid = () => {
     return (
         <div className="grid grid-cols-4 gap-4">
             {
-                users.items.map(user => <User {...user}></User>)
+                users.items.map(user => <User key={user.id} {...user}></User>)
             }
         </div>
     );
