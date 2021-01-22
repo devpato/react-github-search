@@ -27,7 +27,7 @@ export const getUserDetails = createAsyncThunk(
         [getUserDetails.pending]: (state, action) => ({...state, loading: 'PENDING'}),
         [getUserDetails.fulfilled]: (state, action) => {
             return  {
-                user: { ...action.payload },
+                ...action.payload ,
                 loading: 'IDLE',
                 error: null
             };

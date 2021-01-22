@@ -1,5 +1,5 @@
 import { searchUsers } from "../components/Api/UsersApi";
-
+import { LOADING } from "../enums/loading";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const fetchUsers = createAsyncThunk(
@@ -16,17 +16,17 @@ export const usersSlice = createSlice({
         items: [],
         incomplete_results: false,
         total_count: 0,
-        loading: 'IDLE', //change to ENUM
+        loading: LOADING.IDLE,
         error: null
     },
     reducers: {},
     extraReducers: {
-        [fetchUsers.pending]: (state, action) => ({...state, loading: 'PENDING'}),
-        [fetchUsers.fulfilled]: (state, action) => ({...action.payload, loading: 'IDLE', error: null}),
+        [fetchUsers.pending]: (state, action) => ({...state, loading: LOADING.PENDING}),
+        [fetchUsers.fulfilled]: (state, action) => ({...action.payload, loading: LOADING.IDLE, error: null}),
         [fetchUsers.rejected]: (state, action) => {
-            if (state.loading === 'PENDING') {
-              state.loading = 'idle'
-              state.error = action.error
+            if (state.loading === LOADING.PENDING) {
+              state.loading = LOADING.IDLE;
+              state.error = action.error;
             }
         }
     }
