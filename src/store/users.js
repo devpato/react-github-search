@@ -1,4 +1,4 @@
-import { searchUsers } from "../components/Api/UsersApi";
+import { searchUsers } from "../api/UsersApi";
 import { LOADING } from "../enums/loading";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 

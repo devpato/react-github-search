@@ -1,4 +1,4 @@
-import { fetchUserDetails } from "../components/Api/UsersApi";
+import { fetchUserDetails } from "../api/UsersApi";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 

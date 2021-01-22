@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Button from '../../components/Button/Button';
 import { useDispatch } from "react-redux";
 import { fetchUsers } from '../../store/users';
-import { getUserDetails } from '../../store/user';
 
-const SearchBar = ({ title, url, path }) => {
+const SearchBar = ({ title }) => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const dispatch = useDispatch();
@@ -16,7 +15,6 @@ const SearchBar = ({ title, url, path }) => {
     const handleSubmit = event => {
         event.preventDefault();
         dispatch(fetchUsers(searchTerm));
-        dispatch(getUserDetails(searchTerm));
         setSearchTerm('');
     };
 

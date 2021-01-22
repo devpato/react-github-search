@@ -1,14 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import User from '../User/User';
 
-const ResultsGrid = () => {
-    const users = useSelector(state => state.users);
+const ResultsGrid = ({ users }) => {
 
     return (
         <div className="grid grid-cols-4 gap-4">
             {
-                users.items.map(user => <User key={user.id} {...user}></User>)
+                users.map(user => <User key={user.id} {...user}></User>)
             }
         </div>
     );

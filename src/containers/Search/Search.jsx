@@ -1,12 +1,12 @@
 import React from 'react';
-import ResultsGrid from '../../components/ResultsGrid/ResultsGrid';
+import Results from '../Results/Results';
 import SearchBar from '../SearchBar/SearchBar';
 
 const Search = () => {
     return (
         <div className="m-8 space-y-12">
-            <SearchBar title="Users" url="api.github.com" path="search/users"></SearchBar>
-            <ResultsGrid />
+            <SearchBar title="Users"></SearchBar>
+            <Results />
         </div>
     )
 }
